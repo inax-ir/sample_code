@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -9,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>{$title}</title>
-	<link rel="shortcut icon" href="../favicon.png" type="image/x-icon" />
+	<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
 	<link href="templates/css/bootstrap.css" rel="stylesheet">
    <!-- <link href="templates/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">-->
     <link href="templates/css/sb-admin-2.css" rel="stylesheet">

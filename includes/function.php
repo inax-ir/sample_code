@@ -66,7 +66,7 @@ function exec_curl_request($handle) {
 	else{
 		$response = json_decode($response, true);
 		if (isset($response['msg'])  ) {
-			error_log("Request was successfull: {$response['msg']}\n");
+			//error_log("Request was successfull: {$response['msg']}\n");
 		}		
 		//$response = $response['code'];
 	}	
@@ -89,5 +89,49 @@ function filter($value='',$type=''){
 	
 	//$value = $mysqli->real_escape_string($value);
 	return $value;
+}
+function bill_type($bill_type){
+	switch ($bill_type) {
+		case 'water':	$new_bill_type="قبض آب"; break;
+		case 'power':	$new_bill_type="قبض برق"; break;
+		case 'gas':		$new_bill_type="قبض گاز";break;
+		case 'phone':	$new_bill_type="تلفن ثابت"; break;
+		case 'mobile':	$new_bill_type="تلفن همراه"; break;
+		case 'taxes':	$new_bill_type="عوارض شهرداری"; break;
+		case 'tax':	$new_bill_type = 'سازمان مالیات';break;
+		case 'traffic_fines':	$new_bill_type = 'جریمه راهنمایی و رانندگی';break;//Traffic ticket fines
+		default : $new_bill_type=""; break;
+	}
+	return $new_bill_type;
+}
+function inax_url_decrypt($string){//bil.php
+	$counter = 0;
+	$data = str_replace(array('-','_','.'),array('+','/','='),$string);
+	$mod4 = strlen($data) % 4;
+	if ($mod4) {
+	$data .= substr('====', $mod4);
+	}
+	$decrypted = base64_decode($data);
+	
+	$check = array('id','order_id','amount','refcode','status');
+	foreach($check as $str){
+		str_replace($str,'',$decrypted,$count);
+		if($count > 0){
+			$counter++;
+		}
+	}
+	if($counter === 5){
+		return array('data'=>$decrypted , 'status'=>true);
+	}else{
+		return array('data'=>'' , 'status'=>false);
+	}
+}
+function jdate_format($string, $format=null){
+    if ($format === null) {
+        $format = 'Y/m/d ساعت H:i:s';
+    }
+	require_once(SMARTY_PLUGINS_DIR . 'shared.make_timestamp.php'); // برای تبدیل تایم استامپ لازم است
+    $timestamp = smarty_make_timestamp($string);
+	return jdate($format, $timestamp);
 }
 ?>

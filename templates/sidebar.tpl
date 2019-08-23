@@ -21,6 +21,8 @@
 				<li><a {if isset($index_active) }class="active"{/if} href="./"><i class="fa fa-home fa-fw"></i> صفحه اصلی</a></li>
 				<li><a {if isset($charge_active) }class="active"{/if} href="topup.php"><i class="fa fa-envelope fa-fw"></i> خرید شارژ مستقیم</a></li>
 				<li><a {if isset($pin_active) }class="active"{/if} href="pin.php"><i class="fa fa-envelope fa-fw"></i> خرید کارت شارژ</a></li>
+				<li><a {if isset($internet_active) }class="active"{/if} href="#"><i class="fa fa-envelope fa-fw"></i> بسته اینترنت</a></li>
+				<li><a {if isset($bill_active) }class="active"{/if} href="bill.php"><i class="fa fa-envelope fa-fw"></i> پرداخت قبض</a></li>
 			</ul>
 			
 			

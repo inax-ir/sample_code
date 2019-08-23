@@ -12,34 +12,49 @@
 				
 				<div class="alert alert-info">برای شارژ مستقیم سیم کارت خود لطفا از بخش زیر نسبت به انتخاب اپراتور اقدام نمائید.</div>
 					
-					<div class="col-lg-4 col-md-5 text-center">
-						<div class="panel panel-default">
-							<a href="topup.php">
-								<div class="panel-footer" >
-									<span class="text-center"><img src="templates/images/topup.png" /></span>
-									<div class="clearfix"></div>
-								</div>
-							</a>
+					<div class="row">
+						<div class="col-lg-6 col-md-5 text-center">
+							<div class="panel panel-default">
+								<a href="topup.php">
+									<div class="panel-footer" >
+										<span class="text-center"><img src="templates/images/topup.png" /></span>
+										<div class="clearfix"></div>
+									</div>
+								</a>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-5 text-center">
+							<div class="panel panel-default">
+								<a href="pin.php">
+									<div class="panel-footer" >
+										<span class="text-center"><img src="templates/images/pin.png" /></span>
+										<div class="clearfix"></div>
+									</div>
+								</a>
+							</div>
 						</div>
 					</div>
-					<div class="col-lg-4 col-md-5 text-center">
-						<div class="panel panel-default">
-							<a href="pin.php">
-								<div class="panel-footer" >
-									<span class="text-center"><img src="templates/images/pin.png" /></span>
-									<div class="clearfix"></div>
-								</div>
-							</a>
+					<div class="row">
+						<div class="col-lg-6 col-md-5 text-center">
+							<div class="panel panel-default">
+								<a href="#">
+									<div class="panel-footer" >
+										<span class="text-center"><img src="templates/images/internet.png" /></span>
+										<div class="clearfix"></div>
+									</div>
+								</a>
+							</div>
 						</div>
-					</div>
-					<div class="col-lg-4 col-md-5 text-center">
-						<div class="panel panel-default">
-							<a href="#">
-								<div class="panel-footer" >
-									<span class="text-center"><img src="templates/images/internet.png" /></span>
-									<div class="clearfix"></div>
-								</div>
-							</a>
+						
+						<div class="col-lg-6 col-md-5 text-center">
+							<div class="panel panel-default">
+								<a href="bill.php">
+									<div class="panel-footer" >
+										<span class="text-center"><img src="templates/images/bill.png" /></span>
+										<div class="clearfix"></div>
+									</div>
+								</a>
+							</div>
 						</div>
 					</div>
 

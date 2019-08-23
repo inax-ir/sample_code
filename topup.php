@@ -18,8 +18,6 @@ elseif(isset($_GET['RTL'])){
 	$smarty->assign('rtl_active',true);
 }
 
-error_log(print_r($_POST,true));
-
 if( isset($_POST['btnSubmit']) && ( isset($_GET['MTN']) || isset($_GET['MCI']) || isset($_GET['RTL']) ) ){
 	
 	if(isset($_POST['mobile']) && $_POST['mobile']!='' ){ $mobile = filter($_POST['mobile'],'number'); } else {	$mobile ='';}

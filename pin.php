@@ -2,14 +2,6 @@
 include(dirname( __FILE__ ).'/includes/load.php');
 
 $smarty->assign('pin_active',true);
-/*
-$param = array(
-	'bill_id'		=> '0061903141149',
-	'pay_id'		=> '1960297',
-);
-$result = RequestJson('check_bill',$param);
-print_r($result);
-exit;*/
 
 $smarty->assign('buy_charge',true);
 $smarty->assign('title', 'خرید کارت شارژ');
@@ -29,7 +21,6 @@ elseif(isset($_GET['RTL'])){
 elseif(isset($_GET['bill'])){
 	$smarty->assign('bill_active',true);
 }
-
 
 if( isset($_POST['btnSubmit']) && ( isset($_GET['MTN']) || isset($_GET['MCI']) || isset($_GET['RTL']) ) ){
 	

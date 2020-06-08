@@ -29,6 +29,7 @@ function RequestJson($method,$param) {
 	curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, 20);
 	curl_setopt($handle, CURLOPT_TIMEOUT, 60);
+	curl_setopt($handle, CURLOPT_ENCODING, "");
 	curl_setopt($handle, CURLOPT_POSTFIELDS, json_encode($parameters));
 	curl_setopt($handle, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
 

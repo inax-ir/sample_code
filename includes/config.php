@@ -11,7 +11,7 @@ $db_name 		= 'root';
 //پوشه محل نصب بدون اسلش آخر
 $dir = 'sample_script';
 
-$test_mode = true;
+$test_mode = false;
 
 $mysqli = new mysqli($db_host, $db_username, $db_password, $db_name);
 if ($mysqli->connect_error) { echo "<h1>Error Establishing database connection ...</h1>"; exit;}

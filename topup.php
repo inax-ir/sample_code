@@ -5,6 +5,29 @@ $smarty->assign('charge_active',true);
 
 $smarty->assign('buy_charge',true);
 $smarty->assign('title', 'خرید شارژ مستقیم');
+
+if(isset($_GET['action']) && $_GET['action']=='list'){
+	$smarty->assign('topup_result',true);
+	$smarty->assign('title', 'نتیجه خرید شارژ');
+
+	if(isset($_GET['inax_token']) && $_GET['inax_token']!=''){//نتیجه تراکنش
+		$inax_token 	= $_GET['inax_token'];
+		$decrypted 		= inax_url_decrypt( $inax_token );
+		if(!$decrypted['status']){
+			$error_msg = 'خطا در تجزیه اطلاعات دریافتی';
+		}else{
+			parse_str($decrypted['data'], $ir_output);
+			$trans_id 	= $ir_output['id'];
+			$order_id 	= $ir_output['order_id'];
+			$amount 	= $ir_output['amount'];
+			$ref_code	= $ir_output['ref_code'];
+			$status 	= $ir_output['status'];
+
+			$smarty->append('pay_result',$ir_output);
+		}
+	}
+}
+
 if(isset($_GET['MTN'])){
 	$operator = 'MTN';
 	$smarty->assign('mtn_active',true);
@@ -19,12 +42,9 @@ elseif(isset($_GET['RTL'])){
 }
 
 if( isset($_POST['btnSubmit']) && ( isset($_GET['MTN']) || isset($_GET['MCI']) || isset($_GET['RTL']) ) ){
-	
 	if(isset($_POST['mobile']) && $_POST['mobile']!='' ){ $mobile = filter($_POST['mobile'],'number'); } else {	$mobile ='';}
 	if(isset($_POST['amount']) && $_POST['amount']!='' ){ $amount = filter($_POST['amount']); } else {	$amount ='';}
 	$charge_type = (isset($_POST['charge_type']) && $_POST['charge_type']!='' ) ? filter($_POST['charge_type']) : '';// provider defined in config.php
-	
-	//print_r($_POST);exit;
 
 	if($amount=='custom_amount'){
 		$amount = filter($_POST['custom_amount']);
@@ -70,6 +90,7 @@ if( isset($_POST['btnSubmit']) && ( isset($_GET['MTN']) || isset($_GET['MCI']) |
 			'charge_type'	=> $charge_type,
 			'order_id'		=> $order_id,
 			'callback'		=> $callback,
+			'test_mode'		=> $test_mode,
 		);
 		$result = RequestJson('invoice',$param);
 		

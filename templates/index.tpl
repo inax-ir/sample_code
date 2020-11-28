@@ -37,7 +37,7 @@
 					<div class="row">
 						<div class="col-lg-6 col-md-5 text-center">
 							<div class="panel panel-default">
-								<a href="#">
+								<a href="internet.php">
 									<div class="panel-footer" >
 										<span class="text-center"><img src="templates/images/internet.png" /></span>
 										<div class="clearfix"></div>
@@ -59,9 +59,9 @@
 					</div>
 
 				</div>
-			</div><!-- /.panel -->
+			</div>
 		</div>
 	</div>
-</div><!-- /#page-wrapper -->
+</div>
 
 {include file="footer.tpl"}

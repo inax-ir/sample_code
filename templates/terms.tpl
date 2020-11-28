@@ -11,9 +11,9 @@
 				<div class="panel-body">
 					متن قوانین سایت
 				</div>
-			</div><!-- /.panel -->
+			</div>
 		</div>
 	</div>
-</div><!-- /#page-wrapper -->
+</div>
 
 {include file="footer.tpl"}

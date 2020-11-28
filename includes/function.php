@@ -1,7 +1,7 @@
 <?php
 function RequestJson($method,$param) {
-	global $API_URL,$username,$password;	
-	
+	global $API_URL,$username,$password;
+
 	if (!is_string($method)) {
 		error_log("Method name must be a string\n");
 		return false;
@@ -13,16 +13,16 @@ function RequestJson($method,$param) {
 		error_log("Parameters must be an array\n");
 		return false;
 	}
-	
+
 	$parameters = array(
 		'username'		=> $username,
 		'password'		=> $password,
 		'method'		=> $method
-	);	
-	
+	);
+
 	if(isset($param) && !empty($param)){
 		foreach( $param as $key => $value)
-			$parameters[$key] = $value;		
+			$parameters[$key] = $value;
 	}
 
 	$handle = curl_init($API_URL);
@@ -37,7 +37,7 @@ function RequestJson($method,$param) {
 }
 
 function exec_curl_request($handle) {
-	$response = curl_exec($handle);		
+	$response = curl_exec($handle);
 	//print_r($response);	
 	//file_put_contents('logd',ob_get_clean());	
 	if ($response === false) {
@@ -47,10 +47,10 @@ function exec_curl_request($handle) {
 		curl_close($handle);
 		return false;
 	}
-	
+
 	$http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
-	curl_close($handle);	
-	
+	curl_close($handle);
+
 	if ($http_code >= 500) {
 		// do not wat to DDOS server if something goes wrong
 		sleep(10);
@@ -62,15 +62,15 @@ function exec_curl_request($handle) {
 		if ($http_code == 401) {
 			throw new Exception('Invalid access token provided');
 		}
-		return false;	
+		return false;
 	}
 	else{
 		$response = json_decode($response, true);
 		if (isset($response['msg'])  ) {
 			//error_log("Request was successfull: {$response['msg']}\n");
-		}		
+		}
 		//$response = $response['code'];
-	}	
+	}
 	return $response;
 }
 function filter($value='',$type=''){
@@ -80,14 +80,14 @@ function filter($value='',$type=''){
 	$value = addslashes($value);
 	$value = str_replace('<','',$value);
 	$value = str_replace('>','',$value);
-	
+
 	if($type == 'number'){
 		$value = trim($value);
 	}
 	if($type == 'get_int'){
 		$value = intval($value);
 	}
-	
+
 	//$value = $mysqli->real_escape_string($value);
 	return $value;
 }
@@ -105,23 +105,23 @@ function bill_type($bill_type){
 	}
 	return $new_bill_type;
 }
-function inax_url_decrypt($string){//bil.php
+function inax_url_decrypt($string){//bill.php
 	$counter = 0;
 	$data = str_replace(array('-','_','.'),array('+','/','='),$string);
 	$mod4 = strlen($data) % 4;
 	if ($mod4) {
-	$data .= substr('====', $mod4);
+		$data .= substr('====', $mod4);
 	}
 	$decrypted = base64_decode($data);
-	
-	$check = array('id','order_id','amount','refcode','status');
+
+	$check = array('id','order_id','amount','ref_code','status','buy_info');
 	foreach($check as $str){
-		str_replace($str,'',$decrypted,$count);
-		if($count > 0){
+		if( strpos($decrypted, $str)!==false ){
 			$counter++;
 		}
 	}
-	if($counter === 5){
+
+	if( $counter==5 || $counter==6){
 		return array('data'=>$decrypted , 'status'=>true);
 	}else{
 		return array('data'=>'' , 'status'=>false);

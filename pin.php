@@ -2,9 +2,44 @@
 include(dirname( __FILE__ ).'/includes/load.php');
 
 $smarty->assign('pin_active',true);
-
 $smarty->assign('buy_charge',true);
 $smarty->assign('title', 'خرید کارت شارژ');
+
+if(isset($_GET['action']) && $_GET['action']=='list'){
+	$smarty->assign('pin_result',true);
+	$smarty->assign('title', 'نتیجه خرید شارژ');
+
+	if(isset($_GET['inax_token']) && $_GET['inax_token']!=''){//نتیجه تراکنش
+		$inax_token 	= $_GET['inax_token'];
+		$decrypted 		= inax_url_decrypt( $inax_token );
+		if(!$decrypted['status']){
+			$error_msg = 'خطا در تجزیه اطلاعات دریافتی';
+		}else{
+			parse_str($decrypted['data'], $ir_output);
+			$buy_info 	= $ir_output['buy_info'];
+
+			$buyed_products 	= json_decode($buy_info,true);
+
+			$buyed_output ='';
+			$call_charge = '';
+			if(is_array($buyed_products)){
+
+				foreach($buyed_products as $key => $byued){// به ازای هر تعداد محصول
+					$number=$key+1;//برای شروع از یک
+					$pin 	= $byued['pin'];
+					$serial = $byued['serial'];
+
+					$buyed_output .= "pin {$number}:  {$pin}<br/>";
+					$buyed_output .= "serial {$number}:  {$serial}<br/><br/>";
+				}
+			}
+
+			$ir_output['buyed_output'] = $buyed_output;
+
+			$smarty->append('pay_result',$ir_output);
+		}
+	}
+}
 
 if(isset($_GET['MTN'])){
 	$operator = 'MTN';
@@ -17,9 +52,6 @@ elseif(isset($_GET['MCI'])){
 elseif(isset($_GET['RTL'])){
 	$operator = 'RTL';
 	$smarty->assign('rtl_active',true);
-}
-elseif(isset($_GET['bill'])){
-	$smarty->assign('bill_active',true);
 }
 
 if( isset($_POST['btnSubmit']) && ( isset($_GET['MTN']) || isset($_GET['MCI']) || isset($_GET['RTL']) ) ){
@@ -51,6 +83,8 @@ if( isset($_POST['btnSubmit']) && ( isset($_GET['MTN']) || isset($_GET['MCI']) |
 	else{
 		$order_id = time();
 		$trans_id= 123;
+		$callback = "{$base_url}/pin.php?action=list";
+
 		$param = array(
 			'product'		=> 'pin',
 			'amount'		=> $amount,
@@ -58,6 +92,8 @@ if( isset($_POST['btnSubmit']) && ( isset($_GET['MTN']) || isset($_GET['MCI']) |
 			'operator'		=> $operator,
 			'count'			=> $count,
 			'order_id'		=> $order_id,
+			'callback'		=> $callback,
+			'test_mode'		=> $test_mode,
 		);
 		$result = RequestJson('invoice',$param);
 		

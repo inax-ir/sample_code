@@ -1,11 +1,17 @@
 <?php
-$username = '';
-$password = '';
+//اطلاعات وب سرویس آینکس
+$username = 'USER';
+$password = 'PASS';
 
 $db_host 		= 'localhost';
 $db_username 	= 'root';
 $db_password 	= '';
-$db_name 		= 'inax';
+$db_name 		= 'root';
+
+//پوشه محل نصب بدون اسلش آخر
+$dir = 'sample_script';
+
+$test_mode = true;
 
 $mysqli = new mysqli($db_host, $db_username, $db_password, $db_name);
 if ($mysqli->connect_error) { echo "<h1>Error Establishing database connection ...</h1>"; exit;}
@@ -25,8 +31,9 @@ if(!empty($_SERVER['HTTPS']) && ($_SERVER['HTTPS']=='on') ) {
 	$Protocol = 'http://';
 }
 
-//$domain_root		= dirname();
+$host_url 	= $Protocol . $_SERVER['HTTP_HOST'] ;
 
-$base_url 	= $Protocol.$HTTP_HOST."/inax";
+$base_url = "$host_url/$dir";
+
 $API_URL 	= "https://inax.ir/webservice.php";
 ?>

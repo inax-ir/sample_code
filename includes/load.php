@@ -6,8 +6,11 @@ include(dirname( __FILE__ ).'/function.php');
 include(dirname( __FILE__ ).'/validation.php');
 
 $smarty = new SmartyBC;
-$smarty->setCompileDir('../templates_c');
-$smarty->assign('base_url', $base_url);
+$smarty->setCompileDir(realpath(__DIR__ . '/../') . '/templates_c');
+
+if(isset($base_url)){
+	$smarty->assign('base_url', $base_url);
+}
 
 $validate = new SimaNet_Validate;
 

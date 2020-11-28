@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-	<base href="{$base_url}/" >
+	{if isset($base_url) }<base href="{$base_url}/" >{/if}
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -41,10 +41,10 @@
 
 						<!--<li class="menu-item menu-item-type-post_type menu-item-object-page for_links"><a href="https://telegram.me/inaxir" target="_blank" title="جهت عضویت در کانال تلگرام اینجا کلیک کنید" ><span class="fa fa-send"></span><span class="link_txt"> عضویت در کانال تلگرام</span></a></li>-->
 						
-						<li class="menu-item menu-item-type-post_type menu-item-object-page for_links"><a href="index.php?contact-us" title="تماس با ما" ><span class="fa fa-send"></span><span class="link_txt"> تماس با ما</span></a></li>
-						<li class="menu-item menu-item-type-post_type menu-item-object-page for_links"><a href="index.php?about-us" title="درباره ما" ><span class="fa fa-send"></span><span class="link_txt"> درباره ما</span></a></li>
-						<li class="menu-item menu-item-type-post_type menu-item-object-page for_links"><a href="index.php?terms" title="قوانین" ><span class="fa fa-send"></span><span class="link_txt"> قوانین سایت</span></a></li>
-						<li class="menu-item menu-item-type-post_type menu-item-object-page for_links"><a href="index.php?shekayat" title="ثبت شکایات" ><span class="fa fa-send"></span><span class="link_txt"> ثبت شکایات</span></a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page for_links"><a href="index.php?contact-us" title="تماس با ما" ><span class="fa fa-phone"></span><span class="link_txt"> تماس با ما</span></a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page for_links"><a href="index.php?about-us" title="درباره ما" ><span class="fa fa-link"></span><span class="link_txt"> درباره ما</span></a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page for_links"><a href="index.php?terms" title="قوانین" ><span class="fa fa-link"></span><span class="link_txt"> قوانین سایت</span></a></li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page for_links"><a href="index.php?shekayat" title="ثبت شکایات" ><span class="fa fa-link"></span><span class="link_txt"> ثبت شکایات</span></a></li>
 					</ul>
 				</div>
 			</nav>

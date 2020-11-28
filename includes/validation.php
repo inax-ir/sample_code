@@ -164,7 +164,7 @@ function bot_name($string=NULL){
 	}
 }
 function valid_token($string=NULL){
-	$string = str_replace(array("-" , "_" , ":"),array("","",""),$string);//مواردي که در توکن مي تواند باشد را پاک ميکنم زيرا پريگ مچ خط تيره رو تشخيص نميده
+	$string = str_replace(array("-" , "_" , ":"),array("","",""),$string);
 	if(preg_match("/^([ a-z A-Z 0-9])+$/",$string)){
 		return true;
 	}else{

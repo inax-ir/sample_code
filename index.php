@@ -23,8 +23,4 @@ elseif(isset($_GET['terms'])){
 	if(isset($success_msg)){$smarty->assign('success_msg',$success_msg);}
 	$smarty->display('index.tpl');
 }
-
-	
-
-
 ?>

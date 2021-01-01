@@ -229,7 +229,7 @@ else{
 				$error_msg = "لطفا کمی بعد دوباره تلاش نمائید";
 			}
 		}
-	} //-->submit
+	} // --> submit
 }
 
 function operator_fa($operator){
@@ -245,5 +245,4 @@ function operator_fa($operator){
 if(isset($error_msg)){$smarty->assign('error_msg',$error_msg);}
 if(isset($success_msg)){$smarty->assign('success_msg',$success_msg);}
 $smarty->display('internet.tpl');
-
 ?>

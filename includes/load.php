@@ -1,7 +1,7 @@
 <?php
 include(dirname( __FILE__ ).'/config.php');
 include(dirname( __FILE__ ).'/jdf.php');
-include(dirname( __FILE__ ).'/smarty-3.1.35/libs/SmartyBC.class.php');
+include(dirname( __FILE__ ).'/smarty-3.1.38/libs/SmartyBC.class.php');
 include(dirname( __FILE__ ).'/function.php');
 include(dirname( __FILE__ ).'/validation.php');
 

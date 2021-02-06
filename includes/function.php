@@ -94,18 +94,18 @@ function filter($value='',$type=''){
 function bill_type($bill_type){
 	switch ($bill_type) {
 		case 'water':	$new_bill_type="قبض آب"; break;
-		case 'power':	$new_bill_type="قبض برق"; break;
+		case 'elec':	$new_bill_type="قبض برق"; break;
 		case 'gas':		$new_bill_type="قبض گاز";break;
 		case 'phone':	$new_bill_type="تلفن ثابت"; break;
 		case 'mobile':	$new_bill_type="تلفن همراه"; break;
-		case 'taxes':	$new_bill_type="عوارض شهرداری"; break;
+		case 'city':	$new_bill_type="عوارض شهرداری"; break;
 		case 'tax':	$new_bill_type = 'سازمان مالیات';break;
 		case 'traffic_fines':	$new_bill_type = 'جریمه راهنمایی و رانندگی';break;//Traffic ticket fines
 		default : $new_bill_type=""; break;
 	}
 	return $new_bill_type;
 }
-function inax_url_decrypt($string){//bill.php
+function inax_url_decrypt($string){
 	$counter = 0;
 	$data = str_replace(array('-','_','.'),array('+','/','='),$string);
 	$mod4 = strlen($data) % 4;

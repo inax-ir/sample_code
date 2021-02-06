@@ -1,15 +1,15 @@
 <?php
 //اطلاعات وب سرویس آینکس
-$username = 'USER';
-$password = 'PASS';
+$username = '31b7a09f51a094379fd179a7cc18cb65';
+$password = '4e9d800b2cd98d41f0';
 
 $db_host 		= 'localhost';
 $db_username 	= 'root';
 $db_password 	= '';
-$db_name 		= 'root';
+$db_name 		= 'inax_sample_script';
 
 //پوشه محل نصب بدون اسلش آخر
-$dir = 'sample_script';
+$dir = 'phpstorm/inax_sample_script';
 
 $test_mode = false;
 

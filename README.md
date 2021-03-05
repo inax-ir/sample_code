@@ -3,7 +3,7 @@
 [![Build Status](https://inax.ir/includes/github.svg?branch=master)](https://inax.ir/?p=561)
 
 ## Setup 
-[رجهت مشاهده راهنمای نصب اسکریپت، اینجا کلیک کنید.](https://inax.ir/?p=561)
+[جهت مشاهده راهنمای نصب اسکریپت، اینجا کلیک کنید.](https://inax.ir/?p=561)
 
 اسکریپت خرید شارژ توسط وب سرویس آینکس
 

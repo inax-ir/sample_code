@@ -1,4 +1,6 @@
 # sample_code
+[![Build Status](https://travis-ci.org/travispessetto/script-updater-for-php.svg?branch=master)](https://inax.ir/?p=561)
+
 اسکریپت خرید شارژ توسط وب سرویس آینکس
 
 در پوشه includes فایل config.php را باز نموده و تعییرات زیر را اعمال نمائید
@@ -16,7 +18,7 @@
 
 ## Screen Shots
 
-![Imgur](http://i.imgur.com/kF1GrPp.png)
+![Imgur](https://img.inax.ir/2021/03/inax_sample_script.png)
 
 # Change Log
 **version 1.3**

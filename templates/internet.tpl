@@ -22,7 +22,7 @@
                                 <div class="panel panel-default">
                                     <a href="internet.php?MTN">
                                         <div class="panel-footer" >
-                                            <span class="text-center"><img src="templates/images/mtn_internet.jpg" /></span>
+                                            <span class="text-center"><img src="templates/images/mtn_internet.png" /></span>
                                             <div class="clearfix"></div>
                                         </div>
                                     </a>
@@ -32,7 +32,7 @@
                                 <div class="panel panel-default">
                                     <a href="internet.php?MCI">
                                         <div class="panel-footer" >
-                                            <span class="text-center"><img src="templates/images/mci_internet.jpg" /></span>
+                                            <span class="text-center"><img src="templates/images/mci_internet.png" /></span>
                                             <div class="clearfix"></div>
                                         </div>
                                     </a>
@@ -42,7 +42,7 @@
                                 <div class="panel panel-default">
                                     <a href="internet.php?RTL">
                                         <div class="panel-footer" >
-                                            <span class="text-center"><img src="templates/images/rtl_internet.jpg" /></span>
+                                            <span class="text-center"><img src="templates/images/rtl_internet.png" /></span>
                                             <div class="clearfix"></div>
                                         </div>
                                     </a>

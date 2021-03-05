@@ -18,7 +18,7 @@ if(isset($_GET['id']) && $_GET['id']!=''){
 			$order_id 	= $ir_output['order_id'];
 			$ref_code	= $ir_output['ref_code'];
 			$status 	= $ir_output['status'];
-			print_r($ir_output);
+			//print_r($ir_output);
 
 			$order_id = substr($order_id, 0, -3);
 
@@ -70,7 +70,7 @@ if(isset($_GET['check_bill']) ){
 		);
 		$result = RequestJson('check_bill',$param);
 
-		if(isset($result)){
+		if( $result!=false ){
 			$res_code = $result['code'];
 			if($res_code!=1){
 				$error_msg = $result['msg'];
@@ -123,17 +123,19 @@ if(isset($_POST['pay_submit']) ){
 			$amount 	= $bill_row['amount'];
 			
 			$callback = "{$base_url}/bill.php?action=list&id=$db_id";
+			$pay_type = 'online';
 			$param = array(
 				'bill_id'		=> $bill_id,
 				'pay_id'		=> $pay_id,
 				'mobile'		=> $mobile,
 				'order_id'		=> $db_id.rand(100, 999),//در آینکس نباید تکراری باشد
 				'callback'		=> $callback,
-				'test_mode'		=> $test_mode,
+				//'test_mode'		=> $test_mode,
+				'pay_type'		=> $pay_type,
 			);
-			$result = RequestJson('pay_bill',$param,'inax');
-			
-			if(isset($result)){
+			$result = RequestJson('bill',$param,'inax');
+
+			if( $result!=false ){
 				$res_code = $result['code'];
 				if($res_code!=1){
 					$error_msg = $result['msg'];
@@ -141,24 +143,12 @@ if(isset($_POST['pay_submit']) ){
 					$type_en 		= $result['type_en'];
 					$amount 		= $result['amount'];
 					$url 			= $result['url'];
-					$pay_type 		= $result['pay_type'];
+					//$pay_type 		= $result['pay_type'];
 
 					$pay_bill_result = json_encode($result,JSON_UNESCAPED_UNICODE);
 					$mysqli->query("update bill set pay_type='$pay_type',url='$url', pay_bill_result='$pay_bill_result' where id='$db_id' ");
 					
-					if($pay_type=='online'){
-						header( "Location: {$url}" );
-					}
-					else{
-						$clients_rows 	= Get_Clients_Rows('id',$client_id);
-						$credit = $clients_rows['credit'];
-						if($credit < $amount){
-							$error_msg = "موجودی حساب کاربری شما جهت انجام این تراکنش کافی نیست !";
-							$mysqli->query("update bill set code='-2020',date='$date' where id='$db_id' ");
-						}else{
-							echo "oflline";
-						}
-					}
+					header( "Location: {$url}" );
 				}
 			}
 		}

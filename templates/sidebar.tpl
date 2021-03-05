@@ -25,11 +25,6 @@
 				<li><a {if isset($bill_active) }class="active"{/if} href="bill.php"><i class="fa fa-money fa-fw"></i> پرداخت قبض</a></li>
 			</ul>
 			
-			
 		</div>
-		
-		
 	</div>
-	
-			
 </nav>

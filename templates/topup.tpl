@@ -17,7 +17,7 @@
 						<div class="panel panel-default">
 							<a href="topup.php?MTN">
 								<div class="panel-footer" >
-									<span class="text-center"><img src="templates/images/mtn.jpg" /></span>
+									<span class="text-center"><img src="templates/images/mtn.png" /></span>
 									<div class="clearfix"></div>
 								</div>
 							</a>
@@ -27,7 +27,7 @@
 						<div class="panel panel-default">
 							<a href="topup.php?MCI">
 								<div class="panel-footer" >
-									<span class="text-center"><img src="templates/images/mci.jpg" /></span>
+									<span class="text-center"><img src="templates/images/mci.png" /></span>
 									<div class="clearfix"></div>
 								</div>
 							</a>
@@ -37,7 +37,7 @@
 						<div class="panel panel-default">
 							<a href="topup.php?RTL">
 								<div class="panel-footer" >
-									<span class="text-center"><img src="templates/images/rtl.jpg" /></span>
+									<span class="text-center"><img src="templates/images/rtl.png" /></span>
 									<div class="clearfix"></div>
 								</div>
 							</a>
@@ -135,10 +135,10 @@
 									<td>
 										<select name="charge_type" id="charge_type" class="myform-control" style="cursor:pointer;" required="">
 											<option value="">- - - - انتخاب کنید - - - -</option>
-											<option {if isset($smarty.post.charge_type) && $smarty.post.charge_type eq 'normal' }selected{/if} value="normal">شارژ معمولی</option>
-											<option {if isset($smarty.post.charge_type) && $smarty.post.charge_type eq 'amazing' }selected{/if} value="amazing">شارژ شگفت انگیز</option>
-											<option {if isset($smarty.post.charge_type) && $smarty.post.charge_type eq 'mnp' }selected{/if} value="mnp">شارژ سیم کارت ترابرد شده</option>
-											<option {if isset($smarty.post.charge_type) && $smarty.post.charge_type eq 'permanent' }selected{/if} value="permanent">شارژ سیم کارت دایمی</option>
+											<option value="normal">شارژ معمولی</option>
+											<option value="amazing">شارژ شگفت انگیز</option>											
+											<option value="mnp">شارژ سیم کارت ترابرد شده</option>
+											<option value="permanent">شارژ سیم کارت دایمی</option>										
 										</select>
 									</td>
 									<td></td>
@@ -261,13 +261,13 @@
 				
 					<div class="table-responsive">
 						<table class="table table-striped table-bordered table-hover" >
-						{if isset($pay_result)}
-							{foreach from=$pay_result key=key item=link}
-								<tr><th style="width:20%">شناسه تراکنش</th><td>{$link.id}</td></tr>
-								<tr><th>مبلغ شارژ</th><td>{$link.amount|number_format} تومان</td></tr>
-								{if $link.ref_code neq ''}<tr><th>شماره پیگیری</th><td>{$link.ref_code}</td></tr>{/if}
-								<tr><th>شماره سفارش</th><td>{$link.order_id}</td></tr>
-								<tr><th>نتیجه </th><td>{if $link.status eq 'paid'}<span class="label label-success">پرداخت شده</span>{elseif $link.status eq 'unpaid'}<span class="label label-danger">پرداخت نشده</span>{/if}</td></tr>
+						{if isset($topup_rows)}
+						{foreach from=$topup_rows key=key item=link}
+							<tr><th style="width:20%">شناسه تراکنش</th><td>{$link.id}</td></tr>
+							<tr><th>مبلغ شارژ</th><td>{$link.amount|number_format} تومان</td></tr>
+							{if $link.ref_code neq ''}<th>شماره پیگیری</th><td>{$link.ref_code}</td></tr>{/if}
+							<tr><th>شماره سفارش</th><td>{$link.order_id}</td></tr>
+							<tr><th>نتیجه</th><td>{if $link.status eq 'paid'}<span class="label label-success">پرداخت شده</span>{elseif $link.status eq 'unpaid'}<span class="label label-danger">پرداخت نشده</span>{/if}</td></tr>
 						{/foreach}
 						{/if}
 						</table>
@@ -277,9 +277,9 @@
 			{/if}
 			
 
-			</div>
+			</div><!-- /.panel -->
 		</div>
 	</div>
-</div>
+</div><!-- /#page-wrapper -->
 
 {include file="footer.tpl"}

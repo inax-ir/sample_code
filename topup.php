@@ -13,6 +13,7 @@ if(isset($_GET['action']) && $_GET['action']=='list'){
 	if(isset($_GET['inax_token']) && $_GET['inax_token']!=''){//نتیجه تراکنش
 		$inax_token 	= $_GET['inax_token'];
 		$decrypted 		= inax_url_decrypt( $inax_token );
+
 		if(!$decrypted['status']){
 			$error_msg = 'خطا در تجزیه اطلاعات دریافتی';
 		}else{
@@ -23,7 +24,7 @@ if(isset($_GET['action']) && $_GET['action']=='list'){
 			$ref_code	= $ir_output['ref_code'];
 			$status 	= $ir_output['status'];
 
-			$smarty->append('pay_result',$ir_output);
+			$smarty->append('topup_rows',$ir_output);
 		}
 	}
 }
@@ -83,21 +84,22 @@ if( isset($_POST['btnSubmit']) && ( isset($_GET['MTN']) || isset($_GET['MCI']) |
 		$callback = "{$base_url}/topup.php?action=list";
 		
 		$param = array(
-			'product'		=> 'topup',
 			'amount'		=> $amount,
 			'mobile'		=> $mobile,
 			'operator'		=> $operator,
 			'charge_type'	=> $charge_type,
 			'order_id'		=> $order_id,
 			'callback'		=> $callback,
-			'test_mode'		=> $test_mode,
+			//'test_mode'		=> $test_mode,
+			'pay_type'		=> 'online',
 		);
-		$result = RequestJson('invoice',$param);
-		
-		if(isset($result)){
+		$result = RequestJson('topup',$param);
+
+		if( $result!=false ){
 			if($result['code']==1){
-				$trans_id = $result['trans_id'];
-				header( "Location: https://inax.ir/pay.php?tid={$trans_id}" );
+				$trans_id   = $result['trans_id'];
+				$url        = $result['url'];
+				header("Location: {$url}" );
 			}else{
 				$error_msg= $result['msg'];
 			}

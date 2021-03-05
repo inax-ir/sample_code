@@ -86,21 +86,22 @@ if( isset($_POST['btnSubmit']) && ( isset($_GET['MTN']) || isset($_GET['MCI']) |
 		$callback = "{$base_url}/pin.php?action=list";
 
 		$param = array(
-			'product'		=> 'pin',
 			'amount'		=> $amount,
 			'mobile'		=> $mobile,
 			'operator'		=> $operator,
 			'count'			=> $count,
 			'order_id'		=> $order_id,
 			'callback'		=> $callback,
-			'test_mode'		=> $test_mode,
+			//'test_mode'		=> $test_mode,
+			'pay_type'		=> 'online',
 		);
-		$result = RequestJson('invoice',$param);
+		$result = RequestJson('pin',$param);
 		
-		if(isset($result)){
+		if( $result!=false ){
 			if($result['code']==1){
-				$trans_id = $result['trans_id'];
-				header( "Location: https://inax.ir/pay.php?tid={$trans_id}" );
+				$trans_id   = $result['trans_id'];
+				$url        = $result['url'];
+				header("Location: {$url}" );
 			}else{
 				$error_msg= $result['msg'];
 			}

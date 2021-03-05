@@ -116,7 +116,7 @@ else{
 			$smarty->assign('enter_mobile',true);
 
 			$result = RequestJson('get_products',array());
-			if(isset($result)){
+			if( $result!=false ){
 				if($result['code']==1){
 					$pro = $result['products'];
 					if( !isset($pro['internet']) ){
@@ -177,7 +177,7 @@ else{
 		}
 		else{
 			$result = RequestJson('get_products',array());
-			if(isset($result)){
+			if( $result!=false ){
 				if($result['code']==1){
 					$pro = $result['products'];
 					if( !isset($pro['internet']) ){
@@ -197,7 +197,6 @@ else{
 							$callback = "{$base_url}/internet.php?action=list";
 
 							$param = array(
-								'product'		=> 'internet',
 								'amount'		=> $amount,
 								'internet_type'	=> $in_type,
 								'sim_type'		=> $sim_type,
@@ -206,14 +205,16 @@ else{
 								'operator'		=> $operator,
 								'order_id'		=> $order_id,
 								'callback'		=> $callback,
-								'test_mode'		=> $test_mode,
+								//'test_mode'		=> $test_mode,
+								'pay_type'		=> 'online',
 							);
-							$result = RequestJson('invoice',$param);
+							$result = RequestJson('internet',$param);
 
-							if(isset($result)){
+							if( $result!=false ){
 								if($result['code']==1){
-									$trans_id = $result['trans_id'];
-									header( "Location: https://inax.ir/pay.php?tid={$trans_id}" );
+									$trans_id   = $result['trans_id'];
+									$url        = $result['url'];
+									header("Location: {$url}" );
 								}else{
 									$error_msg= $result['msg'];
 								}

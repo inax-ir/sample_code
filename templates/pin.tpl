@@ -17,7 +17,7 @@
                             <div class="panel panel-default">
                                 <a href="pin.php?MTN">
                                     <div class="panel-footer">
-                                        <span class="text-center"><img src="templates/images/mtn.jpg"/></span>
+                                        <span class="text-center"><img src="templates/images/mtn.png"/></span>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -27,7 +27,7 @@
                             <div class="panel panel-default">
                                 <a href="pin.php?MCI">
                                     <div class="panel-footer">
-                                        <span class="text-center"><img src="templates/images/mci.jpg"/></span>
+                                        <span class="text-center"><img src="templates/images/mci.png"/></span>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
@@ -37,7 +37,7 @@
                             <div class="panel panel-default">
                                 <a href="pin.php?RTL">
                                     <div class="panel-footer">
-                                        <span class="text-center"><img src="templates/images/rtl.jpg"/></span>
+                                        <span class="text-center"><img src="templates/images/rtl.png"/></span>
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>

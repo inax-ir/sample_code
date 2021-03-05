@@ -1,5 +1,9 @@
 # sample_code
 [![Build Status](https://travis-ci.org/travispessetto/script-updater-for-php.svg?branch=master)](https://inax.ir/?p=561)
+![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
+![example branch parameter](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?branch=feature-1)
+![example event parameter](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?event=pull_request)
+
 
 اسکریپت خرید شارژ توسط وب سرویس آینکس
 

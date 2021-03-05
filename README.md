@@ -11,14 +11,18 @@
 
 4- فایل sql.sql را در دیتابیس خود ایمپورت کنید
 
-# Version
-Version : 1.3
+# Last Version : 1.3
+
+
+## Screen Shots
+
+![Imgur](http://i.imgur.com/kF1GrPp.png)
 
 # Change Log
-version 1.3
+**version 1.3**
 - آپدیت اسکریپت مطابق ورژن جدید وب سرویس آینکس
 - تغییر تصاویر اپراتورها
 
-version 1.2
+**version 1.2**
 - رفع خطای عدم نمایش جزئیات شارژ خریداری شده
 - به روز رسانی اسمارتی

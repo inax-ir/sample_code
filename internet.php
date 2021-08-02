@@ -164,8 +164,7 @@ else{
 
 		if(isset($_POST['mobile']) && $_POST['mobile']!='' ){ $mobile = filter($_POST['mobile'],'number'); } else {	$mobile ='';		}
 		if(isset($_POST['amount']) && $_POST['amount']!='' ){ $amount = filter($_POST['amount']); } else {	$amount ='';		}
-		if(isset($_POST['description']) && $_POST['description']!='' ){ $description = filter($_POST['description']); } else {	$description ='';	}
-		if(isset($_POST['failed_trans_id']) && $_POST['failed_trans_id']!='' ){ $failed_trans_id = filter($_POST['failed_trans_id']); } else {	$failed_trans_id ='';	}
+		$mnp        = (isset($_POST['mnp']) && $_POST['mnp']==1) ? 1 : '';
 
 		$operator_fa 	= operator_fa($operator);
 
@@ -202,6 +201,7 @@ else{
 								'sim_type'		=> $sim_type,
 								'product_id'	=> $product_id,
 								'mobile'		=> $mobile,
+								'mnp'			=> $mnp,
 								'operator'		=> $operator,
 								'order_id'		=> $order_id,
 								'callback'		=> $callback,

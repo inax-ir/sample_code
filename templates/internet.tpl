@@ -237,22 +237,13 @@
                                             </td>
                                             <td></td>
                                         </tr>
-                                        {if isset($is_admin) }
-                                            <tr>
-                                                <td>شماره تراکنش ناموفق</td>
-                                                <td>
-                                                    <input type="text" maxlength="11" dir="ltr" class="form-control" name="failed_trans_id" value="{if isset($smarty.post.failed_trans_id)}{$smarty.post.failed_trans_id}{/if}" />
-                                                </td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td>
-                                                    <textarea  class="form-control" placeholder="توضیحات در درابطه با علت خرید" name="description" >{if isset($smarty.post.description)}{$smarty.post.description}{/if}</textarea>
-                                                </td>
-                                                <td></td>
-                                            </tr>
-                                        {/if}
+										<tr>
+                                            <td></td>
+                                            <td>
+                                                 <input type="checkbox" name="mnp" value="1" id="mnp_label"> <label for="mnp_label"> در صورتی که شماره فوق به اپراتور انتخاب شده، ترابرد شده است این گزینه را فعال نمائید.</label>
+                                            </td>
+                                            <td></td>
+                                        </tr>
                                         <tr>
                                             <td></td>
                                             <td><button class="btn btn-success form-control" name="submit" type="submit"><i class="fa fa-check"></i> پرداخت و فعالسازی بسته اینترنتی</button></td>

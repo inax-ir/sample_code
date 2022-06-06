@@ -1,5 +1,5 @@
 CREATE TABLE `bill` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) NOT NULL,
   `client_id` int(10) UNSIGNED NOT NULL,
   `mobile` varchar(20) COLLATE utf8_persian_ci NOT NULL,
   `bill_id` varchar(100) COLLATE utf8_persian_ci NOT NULL,
@@ -19,6 +19,5 @@ CREATE TABLE `bill` (
 ALTER TABLE `bill`
   ADD PRIMARY KEY (`id`);
 
--
 ALTER TABLE `bill`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;

@@ -9,13 +9,13 @@ $smarty->assign('title', 'لیست تراکنش ها');
 //echo '<pre>'. print_r($_POST,true) . '</pre>';
 
 if( isset($_GET['product']) && isset($_POST['id']) && isset($_POST['order_id']) && isset($_POST['amount']) && isset($_POST['ref_code']) && isset($_POST['status'])  && isset($_POST['hash'])){
-	$product 	= $_GET['product'];
-	$trans_id 	= $_POST['id'];
-	$order_id 	= $_POST['order_id'];
-	$amount 	= $_POST['amount'];
-	$ref_code	= $_POST['ref_code'];
-	$status 	= $_POST['status'];
-	$inax_hash 	= $_POST['hash'];
+	$product 	= filter($_GET['product']);
+	$trans_id 	= filter($_POST['id']);
+	$order_id 	= filter($_POST['order_id']);
+	$amount 	= filter($_POST['amount']);
+	$ref_code	= filter($_POST['ref_code']);
+	$status 	= filter($_POST['status']);
+	$inax_hash 	= filter($_POST['hash']);
 
 	$for_hash 	= "$trans_id:$username:$password";
 	$hash 		= md5($for_hash);

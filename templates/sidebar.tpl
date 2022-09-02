@@ -23,6 +23,7 @@
 				<li><a {if isset($pin_active) }class="active"{/if} href="pin.php"><i class="fa fa-retweet fa-fw"></i> خرید کارت شارژ</a></li>
 				<li><a {if isset($internet_active) }class="active"{/if} href="internet.php"><i class="fa fa-bars fa-fw"></i> بسته اینترنت</a></li>
 				<li><a {if isset($bill_active) }class="active"{/if} href="bill.php"><i class="fa fa-money fa-fw"></i> پرداخت قبض</a></li>
+				<!--<li><a {if isset($trans_active) }class="active"{/if} href="trans.php"><i class="fa fa-money fa-fw"></i> تراکنش ها</a></li>-->
 			</ul>
 			
 		</div>

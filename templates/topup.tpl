@@ -249,37 +249,11 @@
 					{/if}
 				</div>
 			</div>
-			{/if}
-			
-			{if isset($topup_result) }
-			<div class="panel panel-yellow">	
-				<div class="panel-heading"><i class="fa fa-sitemap fa-fw"></i> نتیجه خرید </div>
-				<div class="panel-body">
-					
-					{if isset($success_msg) }<div class="alert alert-success">{$success_msg}</div>{/if}
-					{if isset($error_msg) }<div class="alert alert-danger">{$error_msg}</div>{/if}
-				
-					<div class="table-responsive">
-						<table class="table table-striped table-bordered table-hover" >
-						{if isset($topup_rows)}
-						{foreach from=$topup_rows key=key item=link}
-							<tr><th style="width:20%">شناسه تراکنش</th><td>{$link.id}</td></tr>
-							<tr><th>مبلغ شارژ</th><td>{$link.amount|number_format} تومان</td></tr>
-							{if $link.ref_code neq ''}<th>شماره پیگیری</th><td>{$link.ref_code}</td></tr>{/if}
-							<tr><th>شماره سفارش</th><td>{$link.order_id}</td></tr>
-							<tr><th>نتیجه</th><td>{if $link.status eq 'paid'}<span class="label label-success">پرداخت شده</span>{elseif $link.status eq 'unpaid'}<span class="label label-danger">پرداخت نشده</span>{/if}</td></tr>
-						{/foreach}
-						{/if}
-						</table>
-					</div>
-				</div>
-			</div>
-			{/if}
-			
+			{/if}	
 
-			</div><!-- /.panel -->
+			</div>
 		</div>
 	</div>
-</div><!-- /#page-wrapper -->
+</div>
 
 {include file="footer.tpl"}

@@ -6,29 +6,6 @@ $smarty->assign('charge_active',true);
 $smarty->assign('buy_charge',true);
 $smarty->assign('title', 'خرید شارژ مستقیم');
 
-if(isset($_GET['action']) && $_GET['action']=='list'){
-	$smarty->assign('topup_result',true);
-	$smarty->assign('title', 'نتیجه خرید شارژ');
-
-	if(isset($_GET['inax_token']) && $_GET['inax_token']!=''){//نتیجه تراکنش
-		$inax_token 	= $_GET['inax_token'];
-		$decrypted 		= inax_url_decrypt( $inax_token );
-
-		if(!$decrypted['status']){
-			$error_msg = 'خطا در تجزیه اطلاعات دریافتی';
-		}else{
-			parse_str($decrypted['data'], $ir_output);
-			$trans_id 	= $ir_output['id'];
-			$order_id 	= $ir_output['order_id'];
-			$amount 	= $ir_output['amount'];
-			$ref_code	= $ir_output['ref_code'];
-			$status 	= $ir_output['status'];
-
-			$smarty->append('topup_rows',$ir_output);
-		}
-	}
-}
-
 if(isset($_GET['MTN'])){
 	$operator = 'MTN';
 	$smarty->assign('mtn_active',true);
@@ -81,7 +58,7 @@ if( isset($_POST['btnSubmit']) && ( isset($_GET['MTN']) || isset($_GET['MCI']) |
 	else{
 		$order_id = time();
 		$trans_id= 123;
-		$callback = "{$base_url}/topup.php?action=list";
+		$callback = "{$base_url}/trans.php?product=topup";
 		
 		$param = array(
 			'amount'		=> $amount,

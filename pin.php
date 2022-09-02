@@ -5,42 +5,6 @@ $smarty->assign('pin_active',true);
 $smarty->assign('buy_charge',true);
 $smarty->assign('title', 'خرید کارت شارژ');
 
-if(isset($_GET['action']) && $_GET['action']=='list'){
-	$smarty->assign('pin_result',true);
-	$smarty->assign('title', 'نتیجه خرید شارژ');
-
-	if(isset($_GET['inax_token']) && $_GET['inax_token']!=''){//نتیجه تراکنش
-		$inax_token 	= $_GET['inax_token'];
-		$decrypted 		= inax_url_decrypt( $inax_token );
-		if(!$decrypted['status']){
-			$error_msg = 'خطا در تجزیه اطلاعات دریافتی';
-		}else{
-			parse_str($decrypted['data'], $ir_output);
-			$buy_info 	= $ir_output['buy_info'];
-
-			$buyed_products 	= json_decode($buy_info,true);
-
-			$buyed_output ='';
-			$call_charge = '';
-			if(is_array($buyed_products)){
-
-				foreach($buyed_products as $key => $byued){// به ازای هر تعداد محصول
-					$number=$key+1;//برای شروع از یک
-					$pin 	= $byued['pin'];
-					$serial = $byued['serial'];
-
-					$buyed_output .= "pin {$number}:  {$pin}<br/>";
-					$buyed_output .= "serial {$number}:  {$serial}<br/><br/>";
-				}
-			}
-
-			$ir_output['buyed_output'] = $buyed_output;
-
-			$smarty->append('pay_result',$ir_output);
-		}
-	}
-}
-
 if(isset($_GET['MTN'])){
 	$operator = 'MTN';
 	$smarty->assign('mtn_active',true);
@@ -83,7 +47,7 @@ if( isset($_POST['btnSubmit']) && ( isset($_GET['MTN']) || isset($_GET['MCI']) |
 	else{
 		$order_id = time();
 		$trans_id= 123;
-		$callback = "{$base_url}/pin.php?action=list";
+		$callback = "{$base_url}/trans.php?product=pin";
 
 		$param = array(
 			'amount'		=> $amount,

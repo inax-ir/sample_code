@@ -1,11 +1,11 @@
 <?php
 include(dirname( __FILE__ ).'/config.php');
 include(dirname( __FILE__ ).'/jdf.php');
-include(dirname( __FILE__ ).'/smarty-3.1.38/libs/SmartyBC.class.php');
+include(dirname( __FILE__ ).'/smarty-4.2.0/libs/Smarty.class.php');
 include(dirname( __FILE__ ).'/function.php');
 include(dirname( __FILE__ ).'/validation.php');
 
-$smarty = new SmartyBC;
+$smarty = new Smarty;
 $smarty->setCompileDir(realpath(__DIR__ . '/../') . '/templates_c');
 
 if(isset($base_url)){

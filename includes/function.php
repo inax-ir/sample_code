@@ -74,6 +74,7 @@ function exec_curl_request($handle) {
 	}
 	return $response;
 }
+
 function filter($value='',$type=''){
 	global $mysqli;
 	$value = strip_tags($value); // Strip HTML and PHP tags from a string
@@ -92,6 +93,7 @@ function filter($value='',$type=''){
 	//$value = $mysqli->real_escape_string($value);
 	return $value;
 }
+
 function bill_type($bill_type){
 	switch ($bill_type) {
 		case 'water':	$new_bill_type="قبض آب"; break;
@@ -106,28 +108,7 @@ function bill_type($bill_type){
 	}
 	return $new_bill_type;
 }
-function inax_url_decrypt($string){
-	$counter = 0;
-	$data = str_replace(array('-','_','.'),array('+','/','='),$string);
-	$mod4 = strlen($data) % 4;
-	if ($mod4) {
-		$data .= substr('====', $mod4);
-	}
-	$decrypted = base64_decode($data);
 
-	$check = array('id','order_id','amount','ref_code','status','buy_info');
-	foreach($check as $str){
-		if( strpos($decrypted, $str)!==false ){
-			$counter++;
-		}
-	}
-
-	if( $counter==5 || $counter==6){
-		return array('data'=>$decrypted , 'status'=>true);
-	}else{
-		return array('data'=>'' , 'status'=>false);
-	}
-}
 function jdate_format($string, $format=null){
     if ($format === null) {
         $format = 'Y/m/d ساعت H:i:s';

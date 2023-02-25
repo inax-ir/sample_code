@@ -20,10 +20,10 @@
 						{foreach from=$trans_result key=key item=link}
 							<tr><th style="width:20%">شناسه تراکنش</th><td>{$link.id}</td></tr>
 							<tr><th>مبلغ تراکنش</th><td>{$link.amount|number_format} تومان</td></tr>
-							{if $link.ref_code neq ''}<th>شماره پیگیری</th><td>{$link.ref_code}</td></tr>{/if}
+							{if !empty($link.ref_code) }<th>شماره پیگیری</th><td>{$link.ref_code}</td></tr>{/if}
 							<tr><th>شماره سفارش</th><td>{$link.order_id}</td></tr>
 							
-							{if $link.product eq 'pin' && isset($link.buyed_output) }
+							{if $link.product eq 'pin' && isset($link.buyed_output) && !empty($link.buyed_output) }
 							<tr>
 								<th>اطلاعات خرید</th>
 								<td>{$link.buyed_output}</td>
@@ -47,7 +47,7 @@
 								<th width="200px">موبایل</th>
 								<td>{$link.mobile}</td>
 							</tr>
-							{if $link.status eq 'paid'}
+							{if $link.status eq 'paid' && !empty($link.pay_date) }
 							<tr>
 								<th>تاریخ پرداخت</th>
 								<td>{$link.pay_date|jdate_format}</td>

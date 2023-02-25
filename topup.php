@@ -6,6 +6,7 @@ $smarty->assign('charge_active',true);
 $smarty->assign('buy_charge',true);
 $smarty->assign('title', 'خرید شارژ مستقیم');
 
+$operator ='';
 if(isset($_GET['MTN'])){
 	$operator = 'MTN';
 	$smarty->assign('mtn_active',true);
@@ -18,11 +19,13 @@ elseif(isset($_GET['RTL'])){
 	$operator = 'RTL';
 	$smarty->assign('rtl_active',true);
 }
+$smarty->assign('operator',$operator);
 
 if( isset($_POST['btnSubmit']) && ( isset($_GET['MTN']) || isset($_GET['MCI']) || isset($_GET['RTL']) ) ){
-	if(isset($_POST['mobile']) && $_POST['mobile']!='' ){ $mobile = filter($_POST['mobile'],'number'); } else {	$mobile ='';}
-	if(isset($_POST['amount']) && $_POST['amount']!='' ){ $amount = filter($_POST['amount']); } else {	$amount ='';}
-	$charge_type = (isset($_POST['charge_type']) && $_POST['charge_type']!='' ) ? filter($_POST['charge_type']) : '';// provider defined in config.php
+	$mobile 		= (isset($_POST['mobile']) && $_POST['mobile']!='' ) ? filter($_POST['mobile'],'number') : '';
+	$amount 		= (isset($_POST['amount']) && $_POST['amount']!='' ) ? filter($_POST['amount']) : '';
+	$charge_type 	= (isset($_POST['charge_type']) && $_POST['charge_type']!='' ) ? filter($_POST['charge_type']) : '';
+	$mnp 			= (isset($_POST['mnp']) && $_POST['mnp']==1 ) ? 1 : '';
 
 	if($amount=='custom_amount'){
 		$amount = filter($_POST['custom_amount']);
@@ -52,7 +55,7 @@ if( isset($_POST['btnSubmit']) && ( isset($_GET['MTN']) || isset($_GET['MCI']) |
 	elseif( $charge_type == ""){
 		$error_msg = 'لطفا نوع شارژ را انتخاب کنید';
 	}
-	elseif( $charge_type!= "normal" && $charge_type!= "amazing" && $charge_type!= "mnp" && $charge_type!= "permanent" ){
+	elseif( $charge_type!= "normal" && $charge_type!= "amazing" && $charge_type!= "permanent" ){
 		$error_msg = 'نوع شارژ صحیح نیست';
 	}
 	else{
@@ -65,6 +68,7 @@ if( isset($_POST['btnSubmit']) && ( isset($_GET['MTN']) || isset($_GET['MCI']) |
 			'mobile'		=> $mobile,
 			'operator'		=> $operator,
 			'charge_type'	=> $charge_type,
+			'mnp'			=> $mnp,
 			'order_id'		=> $order_id,
 			'callback'		=> $callback,
 			//'test_mode'		=> $test_mode,

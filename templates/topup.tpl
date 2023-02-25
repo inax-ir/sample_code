@@ -131,14 +131,19 @@
 								</tr>-->
 								{/if}
 								<tr>
+									<td colspan="3">
+										<input type="checkbox" name="mnp" value="1" {if isset($smarty.post.mnp) && $smarty.post.mnp eq 1 }checked{/if} id="mnp_label"> <label for="mnp_label"> در صورتی که شماره فوق به {$operator|operator_fa} ترابرد شده است این گزینه را فعال نمائید.</label>
+									</td>
+								</tr>
+								<tr>
 									<td>نوع شارژ</td>
 									<td>
 										<select name="charge_type" id="charge_type" class="myform-control" style="cursor:pointer;" required="">
 											<option value="">- - - - انتخاب کنید - - - -</option>
-											<option value="normal">شارژ معمولی</option>
-											<option value="amazing">شارژ شگفت انگیز</option>											
-											<option value="mnp">شارژ سیم کارت ترابرد شده</option>
-											<option value="permanent">شارژ سیم کارت دایمی</option>										
+											<option value="normal" {if isset($smarty.post.charge_type) && $smarty.post.charge_type eq "normal" }selected{/if} >شارژ معمولی</option>
+											{if isset($mtn_active) || isset($rtl_active)}<option value="amazing" {if isset($smarty.post.charge_type) && $smarty.post.charge_type eq "amazing" }selected{/if} >شارژ شگفت انگیز</option>{/if}										
+											<!--<option value="mnp">شارژ سیم کارت ترابرد شده</option>-->
+											{if isset($mtn_active) }<option value="permanent" {if isset($smarty.post.charge_type) && $smarty.post.charge_type eq "permanent" }selected{/if} >شارژ سیم کارت دایمی</option>{/if}								
 										</select>
 									</td>
 									<td></td>

@@ -37,6 +37,34 @@ function RequestJson($method,$param) {
 	return exec_curl_request($handle);
 }
 
+function operator_fa($operator, $language_code='fa'){
+	switch ($operator){
+		case 'MTN':		$operator_fa = 'ایرانسل';		$operator_en = 'Irancell'; break;
+		case 'MCI':		$operator_fa = 'همراه اول'; 	$operator_en = 'Hamrahe Aval';break;
+		case 'RTL':		$operator_fa = 'رایتل';			$operator_en = 'Rightel';break;
+		case 'TAL':		$operator_fa = 'تالیا';			$operator_en = 'Taliya';break;
+		case 'SHT':		$operator_fa = 'شاتل موبایل';	$operator_en = 'Shatel mobile';break;
+		default   : 	$operator_fa = "";				 $operator_en = '';break;
+	}
+	if($language_code=='fa'){
+		return $operator_fa;
+	}else{
+		return $operator_en;
+	}
+}
+
+function sim_type_fa($sim_type){
+	switch( $sim_type ){
+		case 'credit'           : $sim_type_fa = 'اعتباری';break;
+		case 'permanent'        : $sim_type_fa = 'دایمی';break;
+		case 'TDLTE_credit'     : $sim_type_fa = 'سیم کارت TD-LTE اعتباری';break;
+		case 'TDLTE_permanent'  : $sim_type_fa = 'سیم کارت TD-LTE دائمی';break;
+		case 'data'             : $sim_type_fa = 'دیتا';break;
+		default                 : $sim_type_fa = "نامعلوم";break;
+	}
+	return $sim_type_fa;
+}
+
 function exec_curl_request($handle) {
 	$response = curl_exec($handle);
 	//print_r($response);	

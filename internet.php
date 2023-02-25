@@ -139,9 +139,9 @@ if( isset($_POST['submit']) &&  (isset($_GET['MTN']) || isset($_GET['MCI']) || i
 	$in_type 	= filter($_GET['i']);
 
 	if(isset($_GET['MTN']) ){ $operator = 'MTN';	} elseif(isset($_GET['MCI'])){ $operator = 'MCI';	} elseif(isset($_GET['RTL'])){ $operator = 'RTL';	}
-
-	if(isset($_POST['mobile']) && $_POST['mobile']!='' ){ $mobile = filter($_POST['mobile'],'number'); } else {	$mobile ='';		}
-	if(isset($_POST['amount']) && $_POST['amount']!='' ){ $amount = filter($_POST['amount']); } else {	$amount ='';		}
+	
+	$mobile 	= (isset($_POST['mobile']) && $_POST['mobile']!='' ) ? filter($_POST['mobile'],'number') : '';
+	$amount 	= (isset($_POST['amount']) && $_POST['amount']!='' ) ? filter($_POST['amount']) : '';
 	$mnp        = (isset($_POST['mnp']) && $_POST['mnp']==1) ? 1 : '';
 
 	$operator_fa 	= operator_fa($operator);
@@ -209,17 +209,6 @@ if( isset($_POST['submit']) &&  (isset($_GET['MTN']) || isset($_GET['MCI']) || i
 		}
 	}
 } //-->submit
-
-
-function operator_fa($operator){
-	switch ($operator) {
-		case 'MTN':		$operator_fa = 'ایرانسل';break;
-		case 'MCI':		$operator_fa = 'همراه اول';break;
-		case 'RTL':		$operator_fa = 'رایتل';break;
-		default : 		$operator_fa = ""; break;
-	}
-	return $operator_fa;
-}
 
 if(isset($error_msg)){$smarty->assign('error_msg',$error_msg);}
 if(isset($success_msg)){$smarty->assign('success_msg',$success_msg);}

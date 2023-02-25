@@ -52,7 +52,10 @@ if(isset($_GET['check_bill']) ){
 				$check_bill_result = json_encode($result,JSON_UNESCAPED_UNICODE);
 				
 				$date 	= date('Y-m-d H:i:s');
-				$mysqli->query("INSERT INTO bill ( mobile,bill_id, pay_id,bill_type, amount,check_bill_result,pay_type, date ) VALUES ('$mobile','$bill_id', '$pay_id', '$type_en', '$amount_rial', '$check_bill_result', '$pay_type', '$date' )");
+				
+				$sql =  "INSERT INTO bill ( mobile,bill_id, pay_id,bill_type, amount,check_bill_result,pay_type, date ) VALUES ('$mobile','$bill_id', '$pay_id', '$type_en', '$amount_rial', '$check_bill_result', '$pay_type', '$date' )";
+				//echo $sql;exit;
+				$mysqli->query($sql);
 				$db_id = $mysqli->insert_id;
 
 				$_SESSION['bill_db_id'] = $db_id;

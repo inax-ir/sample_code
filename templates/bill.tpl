@@ -62,6 +62,7 @@
                                         dataType: "text",
                                         success: function (msg) {
                                             obj = JSON.parse(msg);
+                                            //console.log(msg);
                                             if (obj.error_msg == 'no') {
                                                 $('.display_bill_type').html(obj.type);
                                                 $('.display_bill_amount').html(obj.amount + ' ریال');

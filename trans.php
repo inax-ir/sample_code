@@ -67,7 +67,6 @@ if( isset($_GET['product']) && isset($_POST['id']) && isset($_POST['order_id']) 
 			$bill_id1= filter($_GET['id']);
 			$sql_bill = $mysqli->query("SELECT * FROM bill where id='$bill_id1' ORDER BY id DESC limit 1");
 			while($rows_bill = $sql_bill->fetch_assoc() ){
-			
 				$trans['mobile'] 	= $rows_bill['mobile'];
 				$trans['bill_id'] 	= $rows_bill['bill_id'];
 				$trans['pay_id'] 	= $rows_bill['pay_id'];

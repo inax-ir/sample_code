@@ -240,7 +240,7 @@
 										<tr>
                                             <td></td>
                                             <td>
-                                                 <input type="checkbox" name="mnp" value="1" id="mnp_label"> <label for="mnp_label"> در صورتی که شماره فوق به اپراتور انتخاب شده، ترابرد شده است این گزینه را فعال نمائید.</label>
+                                                 <input type="checkbox" name="mnp" value="1" id="mnp_label" {if isset($smarty.post.mnp) && $smarty.post.mnp eq 1 }checked{/if} > <label for="mnp_label"> در صورتی که شماره فوق به اپراتور انتخاب شده، ترابرد شده است این گزینه را فعال نمائید.</label>
                                             </td>
                                             <td></td>
                                         </tr>

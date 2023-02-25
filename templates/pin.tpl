@@ -197,7 +197,8 @@
                                                             $('#invoice_amount').html(amount);
                                                         });
 
-                                                        var count = $('#count').get(0).value;
+                                                        //var count = $('#count').get(0).value;
+                                                        var count = 1;
                                                         $('#invoice_count').html(count);
                                                     }
 
